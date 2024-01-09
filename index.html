@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body style="background-image: url(https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638886301/EducationHub/photos/lightning-bolts.jpg);" >
+    <h1><p style="color: aliceblue; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> Weather Searcher
+        <img src="https://static.vecteezy.com/system/resources/previews/012/066/505/original/sunny-and-rainy-day-weather-forecast-icon-meteorological-sign-3d-render-png.png" style="height: 50px;width: 60px;"></p></h1>
+    <div class="text-center container mt-2"><br>
+        <input id="a" class="form-conrol" placeholder="Enter Name of the City"><br><br>
+        <button class="b" onclick="get_weather()">Get weather</button>
+        <div id="result" class="alert alert-success mt-2">
+        </div>
+    </div>
+    <script>
+        function get_weather(){
+        var x = document.getElementById('a').value
+        var URL = "https://api.openweathermap.org/data/2.5/weather?q=" + String(x) + "&appid=97365fcb4590b108d175160a296b3e17&units=metric"
+        fetch(URL)
+        .then(res => res.json())
+        .then(data => {document.getElementById('result').innerHTML = data['main']['temp']
+        document.getElementById('result').className = "alert alert-success mt-2"
+        });
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
